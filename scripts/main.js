@@ -16,8 +16,12 @@ let myHeading = document.querySelector("h1");
 
 function setUserName() {
   let myName = prompt("请输入你的名字。");
-  localStorage.setItem("name", myName);
-  myHeading.textContent = "Hello! " + myName;
+  if (!myName) {
+    setUserName();
+  } else {
+    localStorage.setItem("name", myName);
+    myHeading.textContent = "Hello! " + myName;
+  }
 }
 
 if (!localStorage.getItem("name")) {
